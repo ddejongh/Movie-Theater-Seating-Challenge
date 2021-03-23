@@ -10,12 +10,17 @@
 #       - s will be used to denote an open seat 
 
 # Assumptions: 
-#       - A buffer of three seats and one row is required
-#       - A diagonal distance of one is good enough 
+#       - Customers have no row preference
+#       - A diagonal distance of one row is sufficient spacing
+#       - End of rows are enough for empty spaces 
+#       - Reservation list is static 
+#       - Input files do not need error handling 
+#       - Reservations are limited to available spaces in the theater
 # --------------------------------------------------------------------------------------------------------------------------------------------
 import sys  # used for command line arguments 
 import os 
 
+# used to map file output
 rows = {
     0: 'A',
     1: 'B',
@@ -35,6 +40,7 @@ reservations = {}
 marker = [0,0] 
 fail_flag = False 
 
+# Will be used to create reservation objects containing id, number of seats, and seats 
 class Reservation:
     def __init__(self, id, num_seats):
         self.id = id
@@ -43,6 +49,7 @@ class Reservation:
 
     def set_assignments(self, labels):
         self.assignments = labels 
+
 
 """
 This function will be used to generate the chart for seating.
@@ -53,6 +60,7 @@ def create_seating():
         seats.append([])
         for j in range(20):
             seats[i].append('s')
+
 
 """
 Utility print theater function
@@ -166,6 +174,7 @@ def vertical_is_safe(amount, row, left) -> bool:
 
     return True 
 
+
 """
 Once locations are checked, change these new spots to x's 
 """
@@ -188,6 +197,7 @@ def update_reservation(amount, row, left, reservation_instance):
     
     reservation_instance.set_assignments(temp)
 
+
 """
 Driver function. 
 """
@@ -207,7 +217,7 @@ if __name__ == "__main__":
     with open('output.txt', 'w') as output:
         for key in reservations:
             amount = reservations[key].num_seats
-            if not open_seating(amount, reservations[key]):
+            if not open_seating(amount, reservations[key]):     # FIXME 
                 pass
                 # while(not fail_flag):
                 #     if marker[0] == 9 and marker[1] == 19:

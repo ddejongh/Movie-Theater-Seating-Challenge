@@ -27,6 +27,10 @@ Once this is done we will update the seating chart and output the reservation to
 `$python --version`
 `Python 3.7.3` 
 
+### Execution Instructions 
+- Run: `python3 movies.py [input-file-path]`
+- OR: `python movies.py [input-file-path]`
+
 ### To-do
 1. ~~Implement seating chart~~
 2. ~~Construct `Reservation`~~
