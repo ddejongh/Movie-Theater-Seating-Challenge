@@ -11,9 +11,14 @@ We must maximize customer safety and satisfaction in alignment with the followin
 ### Assumptions
 We will make the following assumptions:
 - Customers have no row preference
-- A diagonal distance of one row is sufficient spacing 
+- A diagonal distance of one row is sufficient spacing
+- End of rows are enough for empty spaces 
+- Reservation list is static 
+- Input files do not need error handling 
+- Reservations are limited to available spaces in the theater  
 
-### The algorithm (tentative)
+### The Algorithm (tentative)
+After initial planning, we will be implementing a first fit method. 
 We will search for the first group of consecutive seats of the size of the reservation. 
 Then we will check that the location meets the safety requirements. 
 Once this is done we will update the seating chart and output the reservation to file `output.txt`. 
@@ -26,4 +31,10 @@ Once this is done we will update the seating chart and output the reservation to
 1. ~~Implement seating chart~~
 2. ~~Construct `Reservation`~~
 3. ~~Implement algorithm~~
-4. ~~Fix edge cases and fitting~~
+4. Fix skip cases 
+
+### Future plans
+1. Implement backtracking to ensure optimal fit 
+2. Refactor functions for readability and modularity 
+3. Maximize customer satisfaction by removing row preference assumption
+4. Add preference seating 
